@@ -1,0 +1,29 @@
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tile {
+    background-color: #cae9f5;
+    border: 3px solid #4ebbe4;
+    cursor: pointer;
+    flex: 0 0 30%;
+    padding: 8px 16px;
+    border-radius: 15px;
+
+    &:hover {
+        background-color: #95cee2;
+    }
+
+    img {
+        width: 256px;
+    }
+}
+
+.tile-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

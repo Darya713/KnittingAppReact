@@ -1,0 +1,27 @@
+.side {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+.side_item {
+    border: 3px solid transparent;
+    cursor: pointer;
+    list-style: none;
+    padding: 8px 16px;
+    text-align: center;
+
+    &.active {
+        background-color: #cae9f5;
+        border-color: #4ebbe4;
+    }
+
+    img {
+        padding: 4px;
+        width: 128px;
+    }
+
+    &:hover {
+        background-color: #95cee2;
+    }
+}
