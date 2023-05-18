@@ -16,7 +16,7 @@ const Tile = ({ handleLogoClick, selectedItemClick, list }) => {
                             <img
                                 alt=''
                                 className={item.imageSize}
-                                src={item.imageSource}
+                                src={require(`../../assets/images/${item.imageSource}`)}
                             />
                             <label>{item.label}</label>
                         </div>

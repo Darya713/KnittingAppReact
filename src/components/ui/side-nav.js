@@ -19,13 +19,14 @@ const SideNav = ({ list, selectedItem }) => {
                         <li
                             key={item.id}
                             className={`side_item ${
-                                activeTab === item.id
-                                    ? 'active'
-                                    : ''
+                                activeTab === item.id ? 'active' : ''
                             }`}
                             onClick={() => handleClick(item)}
                         >
-                            <img alt='' src={item.imageSource} />
+                            <img
+                                alt=''
+                                src={require(`../../assets/images/${item.imageSource}`)}
+                            />
                         </li>
                     );
                 })}
