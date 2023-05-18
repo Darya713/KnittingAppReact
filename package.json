@@ -2,6 +2,7 @@
   "name": "reactapp",
   "version": "0.1.0",
   "proxy": "https://knittingapp-backend.azurewebsites.net/",
+  "homepage":".",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
