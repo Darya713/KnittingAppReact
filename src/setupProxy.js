@@ -4,7 +4,7 @@ const context = ['/knittingtypes'];
 
 module.exports = function (app) {
     const appProxy = createProxyMiddleware(context, {
-        target: 'https://localhost:7083',
+        target: 'https://knittingapp-backend.azurewebsites.net/',
         secure: false,
     });
 
