@@ -59,7 +59,14 @@ export default class Main extends Component {
     }
 
     async populateKnittingTypesData() {
-        const response = await fetch('knittingtypes');
+        const response = await fetch(
+            'https://knittingapp-backend.azurewebsites.net/knittingtypes',
+            {
+                method: 'GET',
+                withCredentials: true,
+                crossorigin: true
+            }
+        );
         const data = await response.json();
         this.setState({ knittingTypes: data, loading: false });
     }
