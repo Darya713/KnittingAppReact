@@ -1,12 +1,12 @@
-// const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-// const context = ['/knittingtypes'];
+const context = ['/knittingtypes'];
 
-// module.exports = function (app) {
-//     const appProxy = createProxyMiddleware(context, {
-//         target: 'https://knittingapp-backend.azurewebsites.net/',
-//         changeOrigin: true,
-//     });
+module.exports = function (app) {
+    const appProxy = createProxyMiddleware(context, {
+        target: process.env.REACT_APP_API_URL,
+        changeOrigin: true,
+    });
 
-//     app.use(appProxy);
-// };
+    app.use(appProxy);
+};
