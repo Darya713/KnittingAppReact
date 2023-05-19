@@ -59,7 +59,8 @@ export default class Main extends Component {
     }
 
     async populateKnittingTypesData() {
-        const response = await fetch('/KnittingTypes');
+        console.log(process.env.REACT_APP_API_URL);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/KnittingTypes`);
         const data = await response.json();
         this.setState({ knittingTypes: data, loading: false });
     }
