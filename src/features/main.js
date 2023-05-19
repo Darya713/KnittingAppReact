@@ -59,7 +59,7 @@ export default class Main extends Component {
     }
 
     async populateKnittingTypesData() {
-        const response = await fetch('KnittingTypes');
+        const response = await fetch('/KnittingTypes');
         const data = await response.json();
         this.setState({ knittingTypes: data, loading: false });
     }
