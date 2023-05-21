@@ -71,7 +71,6 @@ export default class App extends Component {
                 withCredentials: true,
                 headers: {
                     Accept: 'applicaiton/json',
-                    'Content-Type': 'application/json',
                 },
             }
         );
