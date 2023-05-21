@@ -65,13 +65,16 @@ export default class App extends Component {
     }
 
     async populateWeatherData() {
-        const response = await fetch('https://knittingapp-backend.azurewebsites.net/api/weatherforecast', {
-            withCredentials: true,
-            headers: {
-                Accept: 'applicaiton/json',
-                'Content-Type': 'application/json',
-            },
-        });
+        const response = await fetch(
+            `${process.env.REACT_APP_API_URL}/api/weatherforecast`,
+            {
+                withCredentials: true,
+                headers: {
+                    Accept: 'applicaiton/json',
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
         const data = await response.json();
         console.log(data);
         this.setState({ forecasts: data, loading: false });
