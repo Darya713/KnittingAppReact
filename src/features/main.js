@@ -61,7 +61,7 @@ export default class Main extends Component {
     async populateKnittingTypesData() {
         console.log(process.env.REACT_APP_API_URL);
         const response = await fetch(
-            `${process.env.REACT_APP_API_URL}/api/knittingtypes`,
+            `${process.env.REACT_APP_API_URL}/knittingtypes`,
             {
                 withCredentials: true,
                 headers: {

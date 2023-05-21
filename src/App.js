@@ -66,7 +66,7 @@ export default class App extends Component {
 
     async populateWeatherData() {
         const response = await fetch(
-            `${process.env.REACT_APP_API_URL}/api/weatherforecast`,
+            `${process.env.REACT_APP_API_URL}/weatherforecast`,
             {
                 withCredentials: true,
                 headers: {
