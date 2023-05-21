@@ -14,7 +14,7 @@ export default class App extends Component {
 
     static renderForecastsTable(forecasts) {
         return (
-            <table className="table table-striped" aria-labelledby="tabelLabel">
+            <table className='table table-striped' aria-labelledby='tabelLabel'>
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -43,7 +43,7 @@ export default class App extends Component {
                 <em>
                     Loading... Please refresh once the ASP.NET backend has
                     started. See{' '}
-                    <a href="https://aka.ms/jspsintegrationreact">
+                    <a href='https://aka.ms/jspsintegrationreact'>
                         https://aka.ms/jspsintegrationreact
                     </a>{' '}
                     for more details.
@@ -55,7 +55,7 @@ export default class App extends Component {
 
         return (
             <div>
-                <h1 id="tabelLabel">Weather forecast</h1>
+                <h1 id='tabelLabel'>Weather forecast</h1>
                 <p>
                     This component demonstrates fetching data from the server.
                 </p>
@@ -65,7 +65,13 @@ export default class App extends Component {
     }
 
     async populateWeatherData() {
-        const response = await fetch('/api/weatherforecast');
+        const response = await fetch('/api/weatherforecast', {
+            withCredentials: true,
+            headers: {
+                Accept: 'applicaiton/json',
+                'Content-Type': 'application/json',
+            },
+        });
         const data = await response.json();
         console.log(data);
         this.setState({ forecasts: data, loading: false });
