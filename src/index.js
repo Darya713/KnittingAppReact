@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
 import './assets/styles/index.css';
 import Main from './features/main';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +8,6 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <App />
         <Main />
     </BrowserRouter>
 );
