@@ -1,72 +1,61 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import knitting from './assets/images/knitting.png';
+import './assets/styles/App.scss';
+import SideNav from './components/ui/side-nav';
+import Tile from './components/ui/tile';
 
-export default class App extends Component {
-    static displayName = App.name;
-
+export default class Main extends Component {
     constructor(props) {
         super(props);
-        this.state = { forecasts: [], loading: true };
+
+        this.state = {
+            knittingTypes: [],
+            loading: true,
+            isMainPage: true,
+            selectedItem: {},
+        };
+
+        this.handleLogoClick = this.handleLogoClick.bind(this);
+        this.selectedItemClick = this.selectedItemClick.bind(this);
     }
+
+    handleLogoClick = () => {
+        this.setState({ isMainPage: true });
+    };
+
+    selectedItemClick = (selectedItem) => {
+        this.setState({ isMainPage: false, selectedItem: selectedItem });
+    };
 
     componentDidMount() {
-        this.populateWeatherData();
-    }
-
-    static renderForecastsTable(forecasts) {
-        return (
-            <table className='table table-striped' aria-labelledby='tabelLabel'>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {forecasts.map((forecast) => (
-                        <tr key={forecast.date}>
-                            <td>{forecast.date}</td>
-                            <td>{forecast.temperatureC}</td>
-                            <td>{forecast.temperatureF}</td>
-                            <td>{forecast.summary}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        );
+        this.populateKnittingTypesData();
     }
 
     render() {
-        let contents = this.state.loading ? (
-            <p>
-                <em>
-                    Loading... Please refresh once the ASP.NET backend has
-                    started. See{' '}
-                    <a href='https://aka.ms/jspsintegrationreact'>
-                        https://aka.ms/jspsintegrationreact
-                    </a>{' '}
-                    for more details.
-                </em>
-            </p>
-        ) : (
-            App.renderForecastsTable(this.state.forecasts)
-        );
-
         return (
             <div>
-                <h1 id='tabelLabel'>Weather forecast</h1>
-                <p>
-                    This component demonstrates fetching data from the server.
-                </p>
-                {contents}
+                <h1 onClick={this.handleLogoClick}>
+                    <img alt='' src={knitting}></img>Knitting app
+                </h1>
+
+                {this.state.isMainPage ? (
+                    <Tile
+                        list={this.state.knittingTypes}
+                        selectedItemClick={this.selectedItemClick}
+                    />
+                ) : (
+                    <SideNav
+                        list={this.state.knittingTypes}
+                        selectedItem={this.state.selectedItem}
+                    />
+                )}
             </div>
         );
     }
 
-    async populateWeatherData() {
+    async populateKnittingTypesData() {
         const response = await fetch(
-            `${process.env.REACT_APP_API_URL}/weatherforecast`,
+            `${process.env.REACT_APP_API_URL}/knittingtypes`,
             {
                 withCredentials: true,
                 headers: {
@@ -75,7 +64,10 @@ export default class App extends Component {
             }
         );
         const data = await response.json();
-        console.log(data);
-        this.setState({ forecasts: data, loading: false });
+        this.setState({
+            knittingTypes: data,
+            loading: false,
+            selectedItem: data[0],
+        });
     }
 }

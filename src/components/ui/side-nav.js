@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import '../../assets/styles/side-nav.scss';
 
 const SideNav = ({ list, selectedItem }) => {
-    console.log(selectedItem);
     const [activeTab, setActiveTab] = useState(selectedItem.id ?? list[0].id);
     const handleClick = (e) => {
-        const { id } = e;
-        setActiveTab(id);
+        setActiveTab(e);
     };
-
-    console.log(activeTab);
 
     return (
         <div>

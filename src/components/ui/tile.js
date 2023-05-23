@@ -1,6 +1,6 @@
 import '../../assets/styles/tile.scss';
 
-const Tile = ({ handleLogoClick, selectedItemClick, list }) => {
+const Tile = ({ selectedItemClick, list }) => {
     return (
         <div className='tiles'>
             {list.map((item) => {
@@ -9,13 +9,11 @@ const Tile = ({ handleLogoClick, selectedItemClick, list }) => {
                         <div
                             className='tile-container'
                             onClick={() => {
-                                handleLogoClick(false);
                                 selectedItemClick(item);
                             }}
                         >
                             <img
                                 alt=''
-                                className={item.imageSize}
                                 src={require(`../../assets/images/${item.imageSource}`)}
                             />
                             <label>{item.label}</label>
